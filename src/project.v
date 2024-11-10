@@ -17,9 +17,9 @@ module tt_um_uart_full_duplex (
 );
     wire start_transmit = ui_in[5]; // Map start_transmit to ui_in[7]
     wire instruction_ready_internal;  // Instruction ready output mapped to uo_ou
-    input wire rx;
+    wire rx;
   	assign rx = ui_in[3];// UART RX connected to ui_in[3]
- 	output wire tx;
+ 	wire tx;
   	assign tx = uo_out[4]; // UART TX connected to uo_out[4]
     wire instruction_ready = uo_out[5] ;   // Map instruction_ready to uo_out[5]
     wire transmission_done = uo_out[6] ;   // Map transmission_done to uo_out[6]
