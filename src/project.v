@@ -17,10 +17,14 @@ module tt_um_uart_full_duplex (
 );
     wire start_transmit = ui_in[5]; // Map start_transmit to ui_in[7]
     wire instruction_ready_internal;  // Instruction ready output mapped to uo_ou
-    input wire rx = ui_in[3];  // UART RX connected to ui_in[3]
-    output wire tx = uo_out[4]; // UART TX connected to uo_out[4]
+    input wire rx;
+  	assign rx = ui_in[3];// UART RX connected to ui_in[3]
+ 	output wire tx;
+  	assign tx = uo_out[4]; // UART TX connected to uo_out[4]
     wire instruction_ready = uo_out[5] ;   // Map instruction_ready to uo_out[5]
     wire transmission_done = uo_out[6] ;   // Map transmission_done to uo_out[6]
+  
+  	wire [14:0] instruction_out; // Internal wire for the reconstructed instruction from the handler
 
 	assign uio_in = 0;
 	assign uio_out = 0;
@@ -29,7 +33,7 @@ module tt_um_uart_full_duplex (
 	// List all unused inputs to prevent warnings
 	wire _unused = &{ena, 1'b0};
 
-    / Internal reset signal (active-high reset)
+    // Internal reset signal (active-high reset)
     wire reset = ~rst_n;  // Invert rst_n to create active-high reset
 
     // UART modules with proper reset wiring
