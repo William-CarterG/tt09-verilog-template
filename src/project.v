@@ -26,7 +26,6 @@ module tt_um_uart_full_duplex (
   
   	wire [14:0] instruction_out; // Internal wire for the reconstructed instruction from the handler
 
-	assign uio_in = 0;
 	assign uio_out = 0;
 	assign uio_oe  = 0;
 
